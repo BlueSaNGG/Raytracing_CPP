@@ -1,0 +1,2 @@
+g++ main.cpp -o create
+g++ qjmain.cpp -o create
