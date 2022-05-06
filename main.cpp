@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <algorithm>
 
 #include "Vect.h"
 #include "Ray.h"
@@ -93,6 +94,29 @@ void savebmp (const char* filename, int w, int h, int dpi, RGBType* data) {
 
 int thisone;
 
+int winningObjectIndex(vector<double> object_intersections) {
+    // return the index of the winning interesection
+    int index_of_minimum_value = -1;
+
+    // prevent unnessary calculations
+    if (object_intersections.size() == 0) {
+        // if there no objects
+        return -1;
+    }
+    else {
+        double max = *max_element(object_intersections.begin(), object_intersections.end());
+        double min = max;
+        for (int index = 0; index < object_intersections.size(); index++) {
+            if (object_intersections[index] > 0 && object_intersections[index] < min) {
+                min = object_intersections[index];
+                index_of_minimum_value = index;
+            }
+        }
+        return index_of_minimum_value;
+    }
+
+}
+
 int main (int argc, char* argv[]) {
     cout<<"rendering ..." <<endl;
 
@@ -101,6 +125,8 @@ int main (int argc, char* argv[]) {
     int height = 480;
     int n = width*height;
     RGBType *pixels = new RGBType[n];
+
+    double aspectratio = (double)width/(double)height;
 
     // sphere origin vector
     Vect O (0,0,0);
@@ -141,12 +167,55 @@ int main (int argc, char* argv[]) {
     Sphere scene_sphere (O, 1, pretty_green);
     // beneth the sphere
     Plane scene_plane (Y, -1, maroon);
-    
 
+    // push objects into a vector
+    vector<Object*> scene_objects;
+    scene_objects.push_back(dynamic_cast<Object*>(&scene_sphere));
+    scene_objects.push_back(dynamic_cast<Object*>(&scene_plane));
+
+    // 
+    double xamnt, yamnt;
 
     for (int x = 0; x < width; x++) {
         for (int y = 0; y < height; y++) {
             thisone = y*width + x;
+            // start with no anti-aliasing
+            // offset a position from our direction that the camera it pointed
+            // in order to create the rays go to the left that the direction it pointed and right
+            if (width > height) {
+                // the image is wider than it is tall
+                xamnt = ((x+0.5)/width)*aspectratio - (((width-height)/(double)height)/2);
+                yamnt = ((height - y) + 0.5)/height;
+            }
+            else if (height > width) {
+                // the imager is taller than it is wide
+                xamnt = (x + 0.5)/width;
+                yamnt = (((height - y) + 0.5)/height)/aspectratio - (((height - width)/(double)width)/2);
+            }
+            else {
+                // the image is squre
+                xamnt = (x + 0.5)/width;
+                yamnt = ((height - y) + 0.5)/height;
+            }
+
+            // create rays
+            Vect cam_ray_origin = scene_cam.getCameraPosition();
+            Vect cam_ray_direction = camdir.vectAdd(camright.vectMult(xamnt - 0.5).vectAdd(camdown.vectMult(yamnt - 0.5))).normalize();
+
+            Ray cam_ray (cam_ray_origin, cam_ray_direction);
+
+            // get the intersection values
+            vector<double> intersections;
+
+            // loop through all the object with the ray to find all the intersections
+            for (int index = 0; index < scene_objects.size(); index++) {
+                intersections.push_back(scene_objects.at(index)->findIntersection(cam_ray));
+            }
+
+            // sort the intersections, return the index of the winning object
+            //  to get the first intersect object 
+            int index_of_winning_object = winningObjectIndex(intersections);
+
             // return color
             if ((x > 200 && x < 440) && (y > 200 && y < 280)) {
                 pixels[thisone].r = 150;

@@ -46,6 +46,7 @@
         "xutility": "cpp",
         "iostream": "cpp",
         "sstream": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "vector": "cpp"
     }
 }
