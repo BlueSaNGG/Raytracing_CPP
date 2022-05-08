@@ -18,7 +18,7 @@ class Plane : public Object {
     // method
     Vect getPlaneNormal () { return normal; }
     double getPlaneDistance () { return distance; }
-    Color getPlaneColor () { return color; }
+    Color getColor () { return color; }
 
     // the normal of the intersect point is the normal of the plane
     Vect getNormalAt (Vect point) {

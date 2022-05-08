@@ -12,11 +12,11 @@ class Object {
 
     // method functions
     // creating shadows
-    Color getObjectColor () { return Color (0.0, 0.0, 0.0, 0); }
-
-    double findIntersection(Ray ray) {
+    virtual Color getColor () { return Color (0.0, 0.0, 0.0, 0); }
+    virtual double findIntersection(Ray ray) {
         return 0;
     }
+    virtual Vect getNormalAt (Vect point) { return Vect(0,0,0); }
 
 };
 

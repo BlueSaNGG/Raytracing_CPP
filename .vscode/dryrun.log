@@ -1,4 +1,4 @@
-make.exe --dry-run --keep-going --print-directory
+make.exe --dry-run --always-make --keep-going --print-directory
 make: Entering directory 'c:/Users/Bluesang/OneDrive - University of Illinois - Urbana/Desktop/raytracing/raytracingNow'
 make: Leaving directory 'c:/Users/Bluesang/OneDrive - University of Illinois - Urbana/Desktop/raytracing/raytracingNow'
  

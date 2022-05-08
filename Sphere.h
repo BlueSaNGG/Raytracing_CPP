@@ -18,7 +18,7 @@ class Sphere : public Object {
     // method
     Vect getSphereCenter () { return center; }
     double getSphereRadius () { return radius; }
-    Color getSphereColor () { return color; }
+    Color getColor () { return color; }
     
     Vect getNormalAt(Vect point) {
         // normal always points away from the center of a sphere

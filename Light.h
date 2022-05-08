@@ -3,8 +3,9 @@
 
 #include "Vect.h"
 #include "Color.h"
+#include "Source.h"
 
-class Light {
+class Light : public Source{
     Vect position;
     Color color;
 
@@ -14,7 +15,7 @@ class Light {
 
     // method
     Vect getLightPosition () { return position; }
-    Color getLightColor () { return color; }
+    Color getColor () { return color; }
 };
 
 Light::Light () {

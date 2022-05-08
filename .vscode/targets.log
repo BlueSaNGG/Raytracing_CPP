@@ -8,7 +8,7 @@ Makefile:6: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 06 11:31:39 2022
+# Make data base, printed on Sat May 07 16:28:16 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ USERPROFILE = C:\Users\Bluesang
 # environment
 LOCALAPPDATA = C:\Users\Bluesang\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-7e9218a4-54a0-4e1c-81e0-9223b2832507-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-f003f7bc-9c62-405c-ab55-7fb30c242034-sock
 # environment
 VSCODE_CWD = C:\Users\Bluesang\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -41,7 +41,7 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13288_SIKIGSUKGELJCPZG
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15056_MWCVSJMKXQOCPQRK
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -95,7 +95,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 13288
+VSCODE_PID = 15056
 # environment
 CUDA_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6
 # automatic
@@ -227,7 +227,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 165 Stepping 3, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/Bluesang/OneDrive - University of Illinois - Urbana/Desktop/raytracing/raytracingNow, mtime 1651854688): 20 files, no impossibilities.
+# . (key c:/Users/Bluesang/OneDrive - University of Illinois - Urbana/Desktop/raytracing/raytracingNow, mtime 1651869211): 20 files, no impossibilities.
 
 # 20 files, no impossibilities in 1 directories.
 
@@ -283,6 +283,6 @@ main.o:
 # strcache performance: lookups = 30 / hit rate = 16%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Fri May 06 11:31:39 2022
+# Finished Make data base on Sat May 07 16:28:16 2022
 
  
